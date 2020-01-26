@@ -20,8 +20,8 @@ phases:
     commands:
       - rm -rf public
       - hugo
-     #- aws s3 sync public/ s3://hugo-deployment/ --region us-east-1 --delete
-      -  hugo deploy
+      - aws s3 sync public/ s3://hugo-deployment/ --region us-east-1 --delete
+     #-  hugo deploy
   post_build:
     commands:
       - echo Build completed on `date`
