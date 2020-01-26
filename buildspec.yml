@@ -20,3 +20,7 @@ phases:
       - cd public && aws s3 sync . s3://${s3_output} --region us-east-1 --delete --acl public-read
     finally:
       - echo "Script finished running"
+artifacts:
+    files:
+      - '**/*'
+    base-directory: 'public'
