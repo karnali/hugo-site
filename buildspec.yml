@@ -2,6 +2,7 @@ version: 0.2
 
 environment_variables:
   plaintext:
+    AWS_DEFAULT_REGION: "region us-east-1"
     HUGO_VERSION: "0.63.0"
     
 phases:
@@ -21,7 +22,10 @@ phases:
     commands:
       - rm -rf public
       - hugo
-      - aws s3 sync public/ s3://hugo-deployment/ --region us-east-1 --delete --acl public-read
+   #  - aws s3 sync public/ s3://hugo-deployment/ --delete --acl public-read
+      - aws s3 sync --delete public s3://hugo-deployment --cache-control "max-age=3600, public" --exclude "*" --include "*.html" --include "*.xml"
+      - aws s3 sync --delete public s3://hugo-deployment --cache-control "max-age=86400, public" --exclude "*.html" --exclude "*.xml"
+
   post_build:
     commands:
       - echo Build completed on `date`
