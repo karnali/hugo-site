@@ -20,8 +20,9 @@ phases:
     commands:
       #- rm -rf public
       - hugo
-      - aws s3 sync public/ s3://hugo-deployment/ --size-only --delete
-     #-  hugo deploy
+      - echo "S3 Upload Beginning"
+      - aws s3 sync public/ s3://hugo-deployment/ --region us-east-1 --delete --acl public-read
+      - echo "S3 Upload Complete"
   post_build:
     commands:
       - echo Build completed on `date`
