@@ -13,7 +13,8 @@ phases:
       - cd /tmp
       - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
       - tar -xzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
-      - mv hugo /home/ubuntu/bin/
+      - ls -la
+      - mv /tmp/hugo /home/ubuntu/bin/
       - cd - 
       - rm -rf /tmp/*
     finally:
