@@ -14,6 +14,7 @@ phases:
       - dpkg -i hugo_${HUGO_VERSION}_Linux-64bit.deb
     finally:
       - hugo version
+      - which hugo
   build:
     commands:
       - hugo
