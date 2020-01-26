@@ -18,10 +18,10 @@ phases:
       - rm -rf /tmp/*
   build:
     commands:
-      #- rm -rf public
+     #- rm -rf public
       - hugo
       - echo "S3 Upload Beginning"
-      - aws s3 sync public/ s3://hugo-deployment/ --region us-east-1 --delete --acl public-read
+      - cd public && aws s3 sync . s3://hugo-deployment/ --region us-east-1 --delete --acl public-read
       - echo "S3 Upload Complete"
   post_build:
     commands:
