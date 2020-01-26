@@ -10,8 +10,10 @@ phases:
     runtime-versions:
       docker: 18
     commands:                                                                 
-      - cd /home/ubuntu/bin/
+      - cd /tmp
       - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
+      - mv hugo_${HUGO_VERSION}_Linux-64bit.tar.gz /home/ubuntu/bin/
+      - cd /home/ubuntu/bin/
       - tar -xzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
       - pwd
       - ls -la
