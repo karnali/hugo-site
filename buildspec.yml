@@ -16,11 +16,6 @@ phases:
       - chmod +x hugo
       - mv hugo /usr/local/bin/
       - popd
-      - location="$(which hugo)"
-      - echo "Hugo binary location: $location"
-
-      - version="$(hugo version)"
-      - echo "Hugo binary version: $version"
       - rm -rf /tmp/hugo*
 
   build:
