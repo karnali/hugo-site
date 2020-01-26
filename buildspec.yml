@@ -20,7 +20,7 @@ phases:
       - hugo version
   build:
     commands:
-      - rm -rf public
+  #   - rm -rf public
       - hugo
    #  - aws s3 sync public/ s3://hugo-deployment/ --delete --acl public-read
       - aws s3 sync --delete public s3://hugo-deployment --cache-control "max-age=3600, public" --exclude "*" --include "*.html" --include "*.xml"
