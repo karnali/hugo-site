@@ -10,8 +10,8 @@ phases:
     runtime-versions:
       docker: 18
     commands:                                                                 
-      - wget "https://github.com/gohugoio/hugo/releases/download/v${hugo_version}/hugo_${hugo_version}_Linux-64bit.deb"
-      - sudo dpkg -i hugo_${hugo_version}_Linux-64bit.deb
+      - wget "wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb"
+      - sudo dpkg -i hugo_${HUGO_VERSION}_Linux-64bit.deb
     finally:
       - hugo version
   build:
