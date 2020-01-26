@@ -10,21 +10,16 @@ phases:
     runtime-versions:
       docker: 18
     commands:                                                                 
-      - cd /tmp
-      - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
-      - tar -xzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
-      - chmod +x hugo
-      - mv hugo /usr/local/bin/
-      - cd - 
-      - rm -rf /tmp/*
-      - hugo version
+      - wget https://github.com/gohugoio/hugo/releases/download/v${VERSION}/hugo_${VERSION}_Linux-64bit.tar.gz -o /tmp/hugo.tar.gz
+      - tar xf /tmp/hugo.tar.gz -C /tmp
+     -  mv /tmp/hugo_${HUGO_VERSION}_linux_amd64/hugo_${HUGO_VERSION}_linux_amd64 ~/bin/hugo
+      - rm -rf /tmp/hugo*
+
   build:
     commands:
   #   - rm -rf public
       - hugo
-   #  - aws s3 sync public/ s3://hugo-deployment/ --delete --acl public-read
-      - aws s3 sync --delete public s3://hugo-deployment --cache-control "max-age=3600, public" --exclude "*" --include "*.html" --include "*.xml"
-      - aws s3 sync --delete public s3://hugo-deployment --cache-control "max-age=86400, public" --exclude "*.html" --exclude "*.xml"
+      - aws s3 sync ./public s3://hugo-deployment --delete # upload the site to S3
 
   post_build:
     commands:
