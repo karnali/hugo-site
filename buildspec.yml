@@ -15,7 +15,7 @@ phases:
       - tar -xzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
       - pwd
       - ls -la
-      - cp -r /tmp/hugo/ /home/ubuntu/bin/hugo/
+      - cp -r hugo /home/ubuntu/bin/hugo/
       - cd - 
       #- rm -rf /tmp/*
     finally:
