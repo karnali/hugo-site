@@ -18,9 +18,9 @@ phases:
       - rm -rf /tmp/*
   build:
     commands:
-      - rm -rf public
+      #- rm -rf public
       - hugo
-      - aws s3 sync public/ s3://hugo-deployment/ --region us-east-1 --delete
+      - aws s3 sync public/ s3://hugo-deployment/ --size-only --delete
      #-  hugo deploy
   post_build:
     commands:
