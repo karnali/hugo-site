@@ -23,7 +23,7 @@ phases:
       - hugo
   post_build:
     commands:
-      - aws s3 ls-la s3://hugo-deployment
+      - aws s3 ls s3://hugo-deployment/
       - aws s3 sync public/ s3://${s3_output}/ --region us-east-1 --delete
-      - aws s3 ls-la s3://hugo-deployment
+      - aws s3 ls s3://hugo-deployment/
       - echo Build completed on `date`
